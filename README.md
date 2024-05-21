@@ -4,20 +4,35 @@ Simple Nginx server docker container running a static Bootstrap template - [`sta
 
 ## How to run
 
-You will need Docker on your machine.
+You will need Docker Desktop healthy and running on your machine. It would also help if you login to your docker.com account.
 
+## Build Image
+For local builds:
 ```bash
-# Build Image
-docker build -t bootstrap-nginx
-
-# Run container
-docker run -d -p 80:80 bootstrap-nginx
-
-# Confirm container is running
-docker container ls
+docker buildx build -t bootstrap-nginx .
 ```
 
-Open your browser at localhost or specify public DNS or IP address to confirm that the web server is running.
+For a push of the image to docker.com, it's best to tag a version and `latest`:
+```bash
+docker buildx build -t <your-docker-com-org>/bootstrap-nginx:x.x.x -t <your-docker-com-org>/bootstrap-nginx:latest .
+```
+
+## Run container
+```
+docker run -d -p 8080:80 --name bootstrap-nginx bootstrap-nginx
+```
+
+## Confirm container is running
+docker container ls
+
+Open your browser at localhost or specify public DNS or IP address to confirm that the web server is running:
+http://localhost:8080
+
+## Push to docker.com
+Push all local tags of the image to docker.com:
+```
+docker push -a <your-docker-com-org>/bootstrap-nginx
+```
 
 ## LICENSE
 
