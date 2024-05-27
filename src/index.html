@@ -11,15 +11,14 @@
   <title>Start Bootstrap Sample</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="/css/heroic-features.css" rel="stylesheet">
+  <link href="css/heroic-features.css" rel="stylesheet">
 
 </head>
 
 <body>
-
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
@@ -77,19 +76,29 @@
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="/vendor/jquery/jquery.min.js"></script>
-  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   
   <script>
     // Wait for the document to be fully loaded
     document.addEventListener("DOMContentLoaded", function() {
-      // Your dynamic content update logic
+      var url = window.location.href
+      if (url.substr(-1) != '/') {  // If the url last character is not a slash
+        url += '/';                // Append a slash to it.
+        window.location.replace(url);
+      }
+      // Get the app's config file and update the appName
       $.get(window.location.href + '/config/app-config.json', function(config) {
         // Assuming your config file is JSON
         console.log('appName: ' + config.appName)
         var newContent = '<h1 class="display-3">' + config.appName + '</h1>';
         document.getElementById("appName").innerHTML = newContent;
-        document.getElementById("appVersion").innerHTML = 'Version: ' + config.appVersion;
+      });
+      // Get the app's version file and update the appVersion
+      $.get(window.location.href + '/app-version.json', function(version) {
+        // Assuming your config file is JSON
+        console.log('appVersion: ' + version.appVersion)
+        document.getElementById("appVersion").innerHTML = 'Version: ' + version.appVersion;
       });
     });
   </script>
