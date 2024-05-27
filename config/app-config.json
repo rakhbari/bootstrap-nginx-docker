@@ -1,4 +1,3 @@
 {
-    "appName": "${APP_NAME}",
-    "appVersion": "${APP_VERSION}"
+    "appName": "${APP_NAME}"
 }
