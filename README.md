@@ -6,20 +6,19 @@ Simple Nginx server docker container running a static Bootstrap template - [`sta
 
 You will need Docker Desktop healthy and running on your machine. It would also help if you login to your docker.com account.
 
-## Build Image
+## Build & Push the Image
 For local builds:
 ```bash
-docker buildx build -t bootstrap-nginx .
+./scripts/docker-build.sh <your-docker-com-org> <image-version>
 ```
-
-For a push of the image to docker.com, it's best to tag a version and `latest`:
+Example:
 ```bash
-docker buildx build -t <your-docker-com-org>/bootstrap-nginx:x.x.x -t <your-docker-com-org>/bootstrap-nginx:latest .
+./scripts/docker-build.sh akcn 1.0.0
 ```
 
 ## Run container
 ```
-docker run -d -p 8080:80 --name bootstrap-nginx bootstrap-nginx
+docker run -d -p 8080:80 --name <your-docker-com-org>/bootstrap-nginx bootstrap-nginx
 ```
 
 ## Confirm container is running
