@@ -20,7 +20,7 @@
 
 <body>
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
     <div class="container">
       <a class="navbar-brand" href="#">Start Bootstrap</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,7 +68,7 @@
   <!-- /.container -->
 
   <!-- Footer -->
-  <footer class="py-5 bg-dark">
+  <footer class="py-4 bg-primary">
     <div class="container" id="footer">
       <p class="m-0 text-center text-white">Copyright &copy; Your Website 2024</p>
     </div>
@@ -90,14 +90,13 @@
       // Get the app's config file and update the appName
       $.get(window.location.href + '/config/app-config.json', function(config) {
         // Assuming your config file is JSON
-        console.log('appName: ' + config.appName)
-        var newContent = '<h1 class="display-3">' + config.appName + '</h1>';
-        document.getElementById("appName").innerHTML = newContent;
+        console.log('appName: ' + config.appName);
+        document.getElementById("appName").innerHTML = '<h1 class="display-3">' + config.appName + '</h1>';
       });
       // Get the app's version file and update the appVersion
       $.get(window.location.href + '/app-version.json', function(version) {
         // Assuming your config file is JSON
-        console.log('appVersion: ' + version.appVersion)
+        console.log('appVersion: ' + version.appVersion);
         document.getElementById("appVersion").innerHTML = 'Version: ' + version.appVersion;
       });
     });
